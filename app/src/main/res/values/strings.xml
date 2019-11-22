@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Pautas</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="login">Login</string>
+    <string name="singup">Cadastro</string>
+    <string name="to_singup">Cadastrar</string>
+    <string name="name">Nome</string>
+    <string name="new_user">Novo Usuário</string>
+</resources>
