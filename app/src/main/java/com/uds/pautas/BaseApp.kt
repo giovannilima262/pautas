@@ -3,12 +3,14 @@ package com.uds.pautas
 import android.app.Application
 import com.uds.pautas.di.component.AppComponent
 import com.uds.pautas.di.component.DaggerAppComponent
+import com.uds.pautas.di.module.AppModule
 
 class BaseApp: Application() {
 
-    val component: AppComponent by lazy {
+    private val component: AppComponent by lazy {
         DaggerAppComponent
             .builder()
+            .appModule(AppModule(this))
             .build()
     }
 

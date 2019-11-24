@@ -1,9 +1,21 @@
 package com.uds.pautas.presenter
 
-class LoginPresenter: ILoginPresenter{
+import com.uds.pautas.model.User
+import com.uds.pautas.presenter.db.DBOpenHelper
 
-    override fun login() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class LoginPresenter(private val dbOpenHelper: DBOpenHelper) : ILoginPresenter {
+
+    override fun login(user: User): User {
+        return dbOpenHelper.repositoryUser().getUserByNameAndPassword(user)
+    }
+
+    override fun singup(user: User) {
+        dbOpenHelper.repositoryUser().insertUser(user)
+    }
+
+    override fun rememberPassword(email: String) {
+        var password = dbOpenHelper.repositoryUser().getPasswordWithEmail(email)
+        
     }
 
 }

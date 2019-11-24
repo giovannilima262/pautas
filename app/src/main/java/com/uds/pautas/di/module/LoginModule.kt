@@ -3,6 +3,7 @@ package com.uds.pautas.di.module
 import android.app.Activity
 import com.uds.pautas.presenter.ILoginPresenter
 import com.uds.pautas.presenter.LoginPresenter
+import com.uds.pautas.presenter.db.DBOpenHelper
 import dagger.Module
 import dagger.Provides
 
@@ -16,7 +17,7 @@ class LoginModule(private var activity: Activity) {
 
     @Provides
     fun providePresenter(): ILoginPresenter {
-        return LoginPresenter()
+        return LoginPresenter(DBOpenHelper(activity, null))
     }
 
 }

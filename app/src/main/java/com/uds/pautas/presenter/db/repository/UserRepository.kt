@@ -1,7 +1,7 @@
-package com.uds.pautas.db.repository
+package com.uds.pautas.presenter.db.repository
 
 import android.content.ContentValues
-import com.uds.pautas.db.DBOpenHelper
+import com.uds.pautas.presenter.db.DBOpenHelper
 import com.uds.pautas.model.User
 
 class UserRepository(private val dbOpenHelper: DBOpenHelper) {
@@ -15,13 +15,12 @@ class UserRepository(private val dbOpenHelper: DBOpenHelper) {
         db.close()
     }
 
-    fun getUserByNameAndPassword(user: User): User? {
+    fun getUserByNameAndPassword(userFilter: User): User {
         val user = User()
         val db = dbOpenHelper.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM ${User.TABLE_NAME} WHERE ${User.COLUMN_EMAIL} = ? AND ${User.COLUMN_PASSWORD} = ?",
-            arrayOf(user.email, user.password))
+            arrayOf(userFilter.email, userFilter.password))
         if (cursor != null) {
-            cursor.moveToFirst()
             while (cursor.moveToNext()) {
                 user.id = cursor.getInt(cursor.getColumnIndex(User.COLUMN_ID))
                 user.email = cursor.getString(cursor.getColumnIndex(User.COLUMN_EMAIL))
@@ -30,6 +29,20 @@ class UserRepository(private val dbOpenHelper: DBOpenHelper) {
         }
         cursor.close()
         return user
+    }
+
+    fun getPasswordWithEmail(email: String): String {
+        var password = ""
+        val db = dbOpenHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${User.TABLE_NAME} WHERE ${User.COLUMN_EMAIL} = ? ",
+            arrayOf(email))
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                password = cursor.getString(cursor.getColumnIndex(User.COLUMN_PASSWORD))
+            }
+        }
+        cursor.close()
+        return password
     }
 
 }
