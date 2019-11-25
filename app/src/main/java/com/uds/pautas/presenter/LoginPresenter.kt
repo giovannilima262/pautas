@@ -45,7 +45,6 @@ class LoginPresenter(private val dbOpenHelper: DBOpenHelper) : ILoginPresenter {
                 }
                 override fun onFail(errorMessage: String) {
                     Log.d("MaildroidX",  "FAIL")
-                    throw Exception()
                 }
             })
             .mail()
