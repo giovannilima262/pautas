@@ -1,6 +1,5 @@
 package com.uds.pautas.ui.main.activity.logged
 
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.ExpandableListView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProviders
 import com.uds.pautas.R
 import com.uds.pautas.model.Schedule
 import com.uds.pautas.presenter.shedule.ISchedulePresenter
@@ -146,12 +144,11 @@ class CustomExpandableListAdapter(
 
     override fun onGroupExpanded(groupPosition: Int) {
         super.onGroupExpanded(groupPosition)
-        if(convertViewGroup != null){
-            if(lastExpandedPosition != -1
-                && groupPosition != lastExpandedPosition) {
-                (convertViewGroup as ExpandableListView).collapseGroup(lastExpandedPosition)
-            }
+        if(convertViewGroup != null && lastExpandedPosition != -1
+            && groupPosition != lastExpandedPosition) {
+            (convertViewGroup as ExpandableListView).collapseGroup(lastExpandedPosition)
         }
+
         lastExpandedPosition = groupPosition
     }
 

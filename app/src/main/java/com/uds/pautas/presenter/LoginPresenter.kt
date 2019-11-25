@@ -37,7 +37,7 @@ class LoginPresenter(private val dbOpenHelper: DBOpenHelper) : ILoginPresenter {
             .to(email)
             .from(Credentials.EMAIL)
             .subject("Senha")
-            .body("teste")
+            .body(password)
             .onCompleteCallback(object : MaildroidX.onCompleteCallback{
                 override val timeout: Long = 3000
                 override fun onSuccess() {
@@ -45,6 +45,7 @@ class LoginPresenter(private val dbOpenHelper: DBOpenHelper) : ILoginPresenter {
                 }
                 override fun onFail(errorMessage: String) {
                     Log.d("MaildroidX",  "FAIL")
+                    throw Exception()
                 }
             })
             .mail()
