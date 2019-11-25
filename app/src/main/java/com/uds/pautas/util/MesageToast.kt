@@ -46,6 +46,26 @@ class MesageToast {
         fun textErrorSendEmail(resources: Resources): String {
             return resources.getString(R.string.text_error_send_email)
         }
+
+        fun textSuccessAddSchedule(resources: Resources): String {
+            return resources.getString(R.string.text_success_add_schedule)
+        }
+
+        fun textErrorAddSchedule(resources: Resources): String {
+            return resources.getString(R.string.text_error_add_schedule)
+        }
+
+        fun textSuccessClosedSchedule(resources: Resources): String {
+            return resources.getString(R.string.text_success_closed_schedule)
+        }
+
+        fun textErrorClosedSchedule(resources: Resources): String {
+            return resources.getString(R.string.text_error_closed_schedule)
+        }
+
+        fun textSuccessReopenSchedule(resources: Resources): String {
+            return resources.getString(R.string.text_success_reopen_schedule)
+        }
     }
 
 }

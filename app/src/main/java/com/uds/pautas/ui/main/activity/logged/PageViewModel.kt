@@ -1,11 +1,10 @@
 package com.uds.pautas.ui.main.activity.logged
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.uds.pautas.util.StatusEnum
 
-class PageViewModel : ViewModel() {
+class PageViewModel() : ViewModel() {
 
     private val _index = MutableLiveData<Int>()
 

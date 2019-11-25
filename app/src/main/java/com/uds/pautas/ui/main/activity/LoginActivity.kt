@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
 
     @Inject lateinit var presenter: ILoginPresenter
 
-    private var buttonLoginClick = false
     private var buttonSingupClick = false
     private var buttonRememberPasswordClick = false
 
@@ -36,13 +35,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun buttonLogin() {
         login.setOnClickListener {
-            if(buttonLoginClick) return@setOnClickListener
-
-            buttonLoginClick = true
-            val user = validateInputs()
+            var user = validateInputs()
             if(user.validLogin()) {
-                if(presenter.login(user).validLogged()) {
-                    buttonLogged(user.email)
+                user = presenter.login(user)
+                if(user.validLogged()) {
+                    buttonLogged(user)
                 } else {
                     toastShow(this, textErrorLogin(resources))
                     buttonSingupClick = false
@@ -51,10 +48,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun buttonLogged(email: String) {
-        JwtUtils.set(email, this)
+    private fun buttonLogged(user: User) {
+        JwtUtils.set(user.id, user.name, this)
         val intent = Intent(this, LoggedActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun buttonRememberPassword() {
@@ -105,7 +103,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        buttonLoginClick = false
         buttonSingupClick = false
         buttonRememberPasswordClick = false
     }

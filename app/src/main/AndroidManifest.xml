@@ -13,17 +13,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".ui.main.activity.logged.AddSheduleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.main.activity.RememberPasswordActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.activity.logged.LoggedActivity"
             android:label="@string/title_activity_logged"
-            android:theme="@style/NoActionBar"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.activity.SingupActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.activity.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.main.activity.MainActivity">
+        <activity
+            android:name=".ui.main.activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

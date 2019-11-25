@@ -17,8 +17,8 @@ class MainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Handler().postDelayed({
-            val jwt = JwtUtils.get(this)
-            val intent = jwt?.let {
+            val user = JwtUtils.getUserName(this)
+            val intent = user?.let {
                 Intent(this, LoggedActivity::class.java)
             } ?: Intent(this, LoginActivity::class.java)
             startActivity(intent)

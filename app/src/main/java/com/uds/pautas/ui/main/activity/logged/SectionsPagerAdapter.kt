@@ -7,10 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.uds.pautas.R
 import com.uds.pautas.util.StatusEnum
 
-private val TAB_TITLES = arrayOf(
-    StatusEnum.OPEN.value,
-    StatusEnum.CLOSE.value
-)
+private val TAB_TITLES = StatusEnum.values()
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -24,7 +21,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return TAB_TITLES[position]
+        return TAB_TITLES[position].value
     }
 
     override fun getCount(): Int {

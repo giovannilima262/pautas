@@ -110,4 +110,30 @@
     <string name="title_activity_logged">LoggedActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="description">Breve descrição</string>
+    <string name="author">Autor</string>
+    <string name="close">Finalizar</string>
+    <string name="title">Título</string>
+    <string name="detail">Detalhes</string>
+    <string name="new_shedule">Incluir Pauta</string>
+    <string name="to_register">Finalizar</string>
+    <string name="text_success_add_schedule">Pauta registrada com sucesso</string>
+    <string name="text_error_add_schedule">Erro inesperado ao registrar a pauta</string>
+    <string name="text_success_closed_schedule">Pauta finalizada com sucesso</string>
+    <string name="text_error_closed_schedule">Erro ao finalizar a pauta</string>
+    <string name="reopen">Reabrir</string>
+    <string name="text_success_reopen_schedule">Pauta reaberta com sucesso</string>
+    <string name="title_activity_test">TESTActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 </resources>

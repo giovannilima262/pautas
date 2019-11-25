@@ -10,12 +10,13 @@ class UserRepository(private val dbOpenHelper: DBOpenHelper) {
         val values = ContentValues()
         values.put(User.COLUMN_EMAIL, user.email)
         values.put(User.COLUMN_PASSWORD, user.password)
+        values.put(User.COLUMN_NAME, user.name)
         val db = dbOpenHelper.writableDatabase
         db.insert(User.TABLE_NAME, null, values)
         db.close()
     }
 
-    fun getUserByNameAndPassword(userFilter: User): User {
+    fun findUserByNameAndPassword(userFilter: User): User {
         val user = User()
         val db = dbOpenHelper.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM ${User.TABLE_NAME} WHERE ${User.COLUMN_EMAIL} = ? AND ${User.COLUMN_PASSWORD} = ?",
@@ -23,15 +24,14 @@ class UserRepository(private val dbOpenHelper: DBOpenHelper) {
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 user.id = cursor.getInt(cursor.getColumnIndex(User.COLUMN_ID))
-                user.email = cursor.getString(cursor.getColumnIndex(User.COLUMN_EMAIL))
-                user.password = cursor.getString(cursor.getColumnIndex(User.COLUMN_PASSWORD))
+                user.name = cursor.getString(cursor.getColumnIndex(User.COLUMN_NAME))
             }
         }
         cursor.close()
         return user
     }
 
-    fun getPasswordWithEmail(email: String): String {
+    fun findtPasswordWithEmail(email: String): String {
         var password = ""
         val db = dbOpenHelper.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM ${User.TABLE_NAME} WHERE ${User.COLUMN_EMAIL} = ? ",

@@ -6,26 +6,33 @@ import android.preference.PreferenceManager
 
 object JwtUtils {
 
-    val JWT = "jwt"
+    const val JWT = "jwt"
+    const val USER_NAME = "user"
 
-    fun get(context: Context) : String? {
+    fun getJwt(context: Context) : Int? {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-        val jwt = prefs.getString(JWT, null)
-        return jwt
+        return  prefs.getInt(JWT, 0)
     }
 
-    fun set(value: String, context: Context){
+    fun getUserName(context: Context) : String? {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        return  prefs.getString(USER_NAME, null)
+    }
+
+    fun set(jwt: Int?, userName: String, context: Context){
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val editor = prefs.edit()
-        editor.putString(JWT, value)
-        editor.commit()
+        editor.putInt(JWT, jwt!!)
+        editor.putString(USER_NAME, userName)
+        editor.apply()
     }
 
     fun remove(context: Context){
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val editor = prefs.edit()
         editor.remove(JWT)
-        editor.commit()
+        editor.remove(USER_NAME)
+        editor.apply()
     }
 
 }
